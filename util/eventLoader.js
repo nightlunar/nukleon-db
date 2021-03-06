@@ -6,4 +6,8 @@ module.exports = client => {
   client.on('message',req('message'))
   client.on('guildMemberAdd',req('guildMemberAdd'))
   client.on('guildMemberRemove',req('guildMemberRemove'))
+  client.on("message", req("etiket-yardım"))
+  //client.on('messageReactionAdd', req('messageReactionAdd'))
+  //client.on('messageReactionRemove', req('messageReactionRemove'))
+
 }

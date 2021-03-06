@@ -8,11 +8,12 @@ const db = require('quick.db')
 module.exports = async(member) => {
 	if (member.user.bot) return;
 	let user = member.user;
-	let channelID = db.get(`joinChannel_${member.guild.id}`);
+	let channelID = db.get(`girisRenk_${member.guild.id}`);
 	if (channelID === null) return;
 	let channel = member.guild.channels.cache.get(channelID);
 	if (!channel) return;
 	let joinMsg = db.get(`joinmsg_${member.guild.id}`);
+		let cr = db.get(`cikisRenk_${member.guild.id}`)
 	if (!joinMsg) return;
 	let send = joinMsg
 		.split('{member-mention}')
@@ -31,7 +32,7 @@ module.exports = async(member) => {
 		.join(member.guild.name)
 		.split('{server-memberCount}')
 		.join(member.guild.members.cache.size);
-	const embedito1 = new Discord.MessageEmbed().setColor('GREEN') .setDescription(send);
+	const embedito1 = new Discord.MessageEmbed().setColor(`${cr}`) .setDescription(send);
 	channel.send(embedito1);
 
   var rol = db.fetch(`otorolrolu_${member.guild.id}`)
